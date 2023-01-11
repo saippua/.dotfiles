@@ -25,3 +25,6 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 4
 
 -- vim.g.vimtext_view_general_viewer = '/mnt/c/Users/Saippua/AppData/Local/SumatraPDF/SumatraPDF.exe' -- WSL ONLY
+
+-- Disable mouse
+vim.opt.mouse = ""
