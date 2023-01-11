@@ -1,0 +1,5 @@
+Equaliser: Generic
+No measurement
+Filter  1: ON  PK       Fc    126,0 Hz  Gain -23,0 dB  Q  15
+Filter  2: ON  PK       Fc    200,0 Hz  Gain -3,0 dB  Q  10
+# Filter: ON HPQ Fc 83.57 Hz Q 0.9973
