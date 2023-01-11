@@ -4,7 +4,7 @@ local lz = require('lsp-zero')
 lz.preset("recommended")
 
 lz.ensure_installed({
-	-- 'clangd',
+	'clangd',
 	'sumneko_lua',
 	-- 'pyright',
 })
