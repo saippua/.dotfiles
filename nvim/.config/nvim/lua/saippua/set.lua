@@ -28,3 +28,5 @@ vim.opt.scrolloff = 4
 
 -- Disable mouse
 vim.opt.mouse = ""
+
+vim.opt.clipboard = "unnamedplus"
