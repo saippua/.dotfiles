@@ -118,22 +118,18 @@ fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/localadmin/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/localadmin/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/localadmin/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/localadmin/anaconda3/bin:$PATH"
+        export PATH="$HOME/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-alias dotfiles='/usr/bin/git --git-dir=/home/localadmin/.dotfiles/ --work-tree=/home/localadmin'
 setxkbmap ok_xkb -option "caps:swapescape"
 # source /opt/ros/noetic/setup.bash
-
-# export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:/home/localadmin/Projects/ORB_SLAM3/Examples/ROS
-source /opt/ros/galactic/setup.bash
