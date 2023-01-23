@@ -131,5 +131,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+alias dotfiles='git -C ~/.dotfiles status'
+
 setxkbmap ok_xkb -option "caps:swapescape"
 # source /opt/ros/noetic/setup.bash
