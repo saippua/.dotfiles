@@ -30,3 +30,6 @@ vim.opt.scrolloff = 4
 vim.opt.mouse = ""
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
