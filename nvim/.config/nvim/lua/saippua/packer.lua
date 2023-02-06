@@ -35,6 +35,8 @@ return require('packer').startup(function(use)
 
   use { 'mfussenegger/nvim-dap' }
 
+  -- use { 'ray-x/lsp_signature.nvim' }
+
   use 'tpope/vim-fugitive'
   use 'tpope/vim-surround'
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }

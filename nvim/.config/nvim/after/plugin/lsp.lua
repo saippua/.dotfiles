@@ -19,6 +19,9 @@ local cmp_mappings = lz.defaults.cmp_mappings({
 lz.setup_nvim_cmp({
 	completion = { completeopt = 'menu,menuone,noselect' },
 	mapping = cmp_mappings,
+  sources = {
+    { name = 'nvim_lsp_signature_help' },
+  },
 })
 
 lz.set_preferences({
