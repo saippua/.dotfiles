@@ -20,12 +20,18 @@ lz.setup_nvim_cmp({
 	completion = { completeopt = 'menu,menuone,noselect' },
 	mapping = cmp_mappings,
   sources = {
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
     { name = 'nvim_lsp_signature_help' },
+    { name = 'path' },
+    -- { name = 'cmdline' },
+    { name = 'buffer' },
+    { name = 'luasnip' },
   },
 })
 
 lz.set_preferences({
-	suggest_lsp_servers = false,
+	suggest_lsp_servers = true,
 	sign_icons = {
 		error = 'E',
 		warn  = 'W',
