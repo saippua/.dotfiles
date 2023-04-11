@@ -1,14 +1,14 @@
 local lz = require('lsp-zero')
+local cmp_action = lz.cmp_action()
 
 -- lz.preset('lsp-compe')
 lz.preset("recommended")
 
 lz.ensure_installed({
 	'clangd',
-	'sumneko_lua',
-	-- 'pyright',
 })
 
+require('luasnip.loaders.from_snipmate').lazy_load()
 local cmp = require('cmp')
 local cmp_select_opts = {behavior = cmp.SelectBehavior.Insert}
 local cmp_mappings = lz.defaults.cmp_mappings({
@@ -20,15 +20,17 @@ lz.setup_nvim_cmp({
 	completion = { completeopt = 'menu,menuone,noselect' },
 	mapping = cmp_mappings,
   sources = {
+    { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'nvim_lsp_signature_help' },
     { name = 'path' },
     -- { name = 'cmdline' },
     { name = 'buffer' },
-    { name = 'luasnip' },
   },
 })
+
+
 
 lz.set_preferences({
 	suggest_lsp_servers = true,
@@ -69,3 +71,9 @@ end)
 
 lz.nvim_workspace()
 lz.setup()
+
+vim.keymap.set('i', "<leader>s", function ()
+  return require('luasnip').expand_or_jumpable() and '<Plug>luasnip-expand-or-jump' or '<leader>s'
+end, {silent=true, expr=true, remap=true})
+
+-- vim.cmd("imap <silent><expr> <leader><leader> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<leader><leader>'")
