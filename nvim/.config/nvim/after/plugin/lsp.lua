@@ -1,5 +1,5 @@
 local lz = require('lsp-zero')
-local cmp_action = lz.cmp_action()
+-- local cmp_action = lz.cmp_action()
 
 -- lz.preset('lsp-compe')
 lz.preset("recommended")
