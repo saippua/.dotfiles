@@ -28,8 +28,9 @@ return require('packer').startup(function(use)
       { 'hrsh7th/cmp-nvim-lsp-signature-help' },
 
       -- Snippets
-      { 'L3MON4D3/LuaSnip' },
-      { 'saadparwaiz1/cmp_luasnip' },
+      { 'saadparwaiz1/cmp_luasnip',
+        requires = { 'L3MON4D3/LuaSnip' }
+      },
     },
   }
 

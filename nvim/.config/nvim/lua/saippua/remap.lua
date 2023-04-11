@@ -22,4 +22,3 @@ vim.keymap.set( "v", "c", "\"_c", { noremap = true }, { desc = "test 2" })
 
 vim.keymap.set( "n", "<C-j>", "4j", { noremap = true })
 vim.keymap.set( "n", "<C-k>", "4k", { noremap = true })
-
