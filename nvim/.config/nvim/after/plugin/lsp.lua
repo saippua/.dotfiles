@@ -72,8 +72,9 @@ end)
 lz.nvim_workspace()
 lz.setup()
 
-vim.keymap.set('i', "<leader>s", function ()
-  return require('luasnip').expand_or_jumpable() and '<Plug>luasnip-expand-or-jump' or '<leader>s'
-end, {silent=true, expr=true, remap=true})
+-- TODO figure out a better key for snippets
+-- vim.keymap.set('i', "<leader>s", function ()
+--   return require('luasnip').expand_or_jumpable() and '<Plug>luasnip-expand-or-jump' or '<leader>s'
+-- end, {silent=true, expr=true, remap=true})
 
 -- vim.cmd("imap <silent><expr> <leader><leader> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<leader><leader>'")
