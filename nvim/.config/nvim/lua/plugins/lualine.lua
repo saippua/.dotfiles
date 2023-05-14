@@ -1,4 +1,6 @@
-require('lualine').setup {
+return {
+  'nvim-lualine/lualine.nvim',
+  config = {
     options = {
         icons_enabled = true,
         theme = 'auto',
@@ -38,4 +40,5 @@ require('lualine').setup {
     inactive_winbar = {},
     extensions = {}
 
+  }
 }

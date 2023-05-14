@@ -1,3 +1,6 @@
+-- TODO convert this to lazy.nvim
+
+return {}
 -- require('luasnip.loaders.from_snipmate').lazy_load()
 -- local luasnip = require('luasnip')
 --
