@@ -29,18 +29,27 @@ vim.opt.scrolloff = 4
 -- Disable mouse
 vim.opt.mouse = ""
 
-vim.g.clipboard = {
-  name = 'win32yank',
-  copy = {
-     ["+"] = 'win32yank.exe -i --crlf',
-     ["*"] = 'win32yank.exe -i --crlf',
-   },
-  paste = {
-     ["+"] = 'win32yank.exe -o --lf',
-     ["*"] = 'win32yank.exe -o --lf',
-  },
-  cache_enabled = 0,
-}
+-- local is_wsl = (function()
+--   local output = vim.fn.systemlist "uname -r"
+--   return not not string.find(output[1] or "", "WSL")
+-- end)()
+--
+print(string.format("global is %s!", IS_GLOBAL))
+
+if (IS_WSL) then
+  vim.g.clipboard = {
+    name = 'win32yank',
+    copy = {
+       ["+"] = 'win32yank.exe -i --crlf',
+       ["*"] = 'win32yank.exe -i --crlf',
+     },
+    paste = {
+       ["+"] = 'win32yank.exe -o --lf',
+       ["*"] = 'win32yank.exe -o --lf',
+    },
+    cache_enabled = 0,
+  }
+end
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.ignorecase = true
