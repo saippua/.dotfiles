@@ -35,7 +35,7 @@ return {
             theme = "ivy",
             hijack_netrw = true,
             depth=1,
-            auto_depth=true,
+            auto_depth=false,
             hide_parent_dir=false,
             prompt_path=false,
             initial_mode = "normal",

@@ -1,9 +1,11 @@
+vim.g.mapleader = " "
+vim.keymap.set('n', '<leader>conf', ":e ~/.config/nvim/<CR>", { noremap = true })
+
 IS_WSL = (function()
   local output = vim.fn.systemlist "uname -r"
   return not not string.find(output[1] or "", "WSL")
 end)()
 
-vim.g.mapleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
