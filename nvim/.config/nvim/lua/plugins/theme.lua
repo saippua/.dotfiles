@@ -1,7 +1,6 @@
 return {
-  -- 'navarasu/onedark.nvim',
   'rebelot/kanagawa.nvim',
-  config = {
+  opts = {
     theme = "wave",
     background = {
       dark = "wave",

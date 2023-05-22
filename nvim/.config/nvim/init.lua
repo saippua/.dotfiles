@@ -1,4 +1,8 @@
-require('saippua')
+IS_WSL = (function()
+  local output = vim.fn.systemlist "uname -r"
+  return not not string.find(output[1] or "", "WSL")
+end)()
+
 vim.g.mapleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -16,3 +20,5 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins
 require('lazy').setup('plugins')
+require('saippua')
+
