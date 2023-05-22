@@ -84,6 +84,7 @@ return {
         end, opts)
 
         opts.desc = "Open float: Open popup at cursor position."; vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
+        opts.desc = "Apply fix";                                  vim.keymap.set('n', '<leader>vf', vim.lsp.buf.code_action, opts)
 
         opts.desc = "Rename symbol.";                       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         opts.desc = "Code Actions: ?";                      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
