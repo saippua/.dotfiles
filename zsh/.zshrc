@@ -88,4 +88,6 @@ export EDITOR='nvim'
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 
+setxkbmap ok_xkb -option "caps:swapescape"
+
 setopt BASH_AUTO_LIST NO_MENU_COMPLETE NO_AUTO_MENU
