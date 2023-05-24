@@ -26,6 +26,11 @@ return {
 
     -- lz.preset('lsp-compe')
     lz.preset("recommended")
+    lz.preset({
+      set_lsp_keymaps = {
+        omit = { 'gr' },
+      },
+    })
 
     lz.ensure_installed({
       'clangd',
@@ -71,7 +76,7 @@ return {
         opts.desc = "Goto Declaration.";      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
         opts.desc = "Goto Definition.";       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         opts.desc = "Goto Type Definition.";  vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, opts)
-        opts.desc = "Goto References.";       vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        -- opts.desc = "Goto References.";       vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts) -- Moved to telescope
         opts.desc = "Goto Implementation.";   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 
         opts.desc = "Display hover information.";   vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)

@@ -6,10 +6,11 @@ return {
     config = function()
       local builtin = require('telescope.builtin')
 
-      vim.keymap.set('n', '<leader>pf', builtin.find_files, { noremap = true, desc = "Find File: Fuzzy find file in project."})
-      vim.keymap.set('n', '<leader>ps', builtin.live_grep,  { noremap = true, desc = "Find String: Fuzzy find string in project files." })
-      vim.keymap.set('n', '<leader>fg', builtin.git_files,  { noremap = true, desc = "Find Git: Fuzzy find file in git." })
-      vim.keymap.set('n', '<leader>fb', builtin.buffers,    { noremap = true, desc = "Find Buffer: Fuzzy find buffer." })
+      vim.keymap.set('n', '<leader>pf', builtin.find_files,     { noremap = true, desc = "Find File: Fuzzy find file in project."})
+      vim.keymap.set('n', '<leader>ps', builtin.live_grep,      { noremap = true, desc = "Find String: Fuzzy find string in project files." })
+      vim.keymap.set('n', '<leader>fg', builtin.git_files,      { noremap = true, desc = "Find Git: Fuzzy find file in git." })
+      vim.keymap.set('n', '<leader>fb', builtin.buffers,        { noremap = true, desc = "Find Buffer: Fuzzy find buffer." })
+      vim.keymap.set('n', 'gr',         builtin.lsp_references, { noremap = true, desc = "Find references of symbol under cursor." })
 
       require('telescope').setup {
         defaults = {
