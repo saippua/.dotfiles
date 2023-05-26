@@ -1,59 +1,39 @@
-if false then
-return {}
-else
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    { 'williamboman/mason-lspconfig.nvim' },
     { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lua' },
-    { 'hrsh7th/cmp-nvim-lsp-signature-help' },
-
-    {
-      'saadparwaiz1/cmp_luasnip',
-      dependencies = { 'L3MON4D3/LuaSnip' }
-    },
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim' },
   },
   config = function()
-    print("Loading LSP")
-    local cmp = require('cmp')
+    -- Setup Mason.nvim to automatically load LSPs
+    require("mason-lspconfig").setup_handlers {
+      ["lua_ls"] = function ()
+        require("lspconfig").lua_ls.setup {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = {
+                  'vim',
+                },
+              },
+              completion = {
+                workspaceWord = false,
+                showWord = "Disable",
+              },
+            },
+          },
+        }
+      end,
+      function (server_name)
+        require("lspconfig")[server_name].setup {}
+      end,
+    --   -- -- Overrides
+    --   -- ["rust_analyzer"] = function()
+    --   --   require("rust-tools").setup{}
+    --   -- end,
+    }
 
-    cmp.setup({
-
-      snippet  = {
-        expand = function(args)
-          require('luasnip').lsp_expand(args.body)
-        end,
-      },
-
-      window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
-      },
-
-      mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        -- ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-      }),
-
-      sources = cmp.config.sources({
-        { name = 'luasnip' },
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
-        { name = 'nvim_lsp_signature_help' },
-        { name = 'path' },
-        { name = 'buffer' },
-      }),
-    })
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -84,4 +64,3 @@ return {
     })
   end
 }
-end

@@ -1,6 +1,41 @@
 -- TODO convert this to lazy.nvim
 
-return {}
+return {
+  'L3MON4D3/LuaSnip',
+  config = function()
+    require('luasnip.loaders.from_snipmate').lazy_load()
+    require('luasnip').config.setup({ history = false })
+
+    local luasnip = require('luasnip')
+
+    local jf = function()
+      local jmp = luasnip.locally_jumpable(1)
+      print(jmp)
+      if jmp then luasnip.jump(1) end
+    end
+
+    local jb = function()
+      local jmp = luasnip.locally_jumpable(-1)
+      print(jmp)
+      if jmp then luasnip.jump(-1) end
+    end
+    vim.keymap.set('i', '<C-n>', jf, { remap = false })
+    vim.keymap.set('s', '<C-n>', jf, { remap = false })
+    vim.keymap.set('i', '<C-p>', jb, { remap = false })
+    vim.keymap.set('s', '<C-p>', jb, { remap = false })
+
+    local ls = require("luasnip")
+    local i = ls.insert_node
+    local t = ls.text_node
+    local s = ls.snippet
+
+    ls.add_snippets("lua", {
+      s("ternary", {
+        i(1, "cond"), t(" ? "), i(2, "then"), t(" : "), i(3, "else")
+      })
+    })
+  end
+}
 -- require('luasnip.loaders.from_snipmate').lazy_load()
 -- local luasnip = require('luasnip')
 --
