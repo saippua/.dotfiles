@@ -3,13 +3,13 @@
 
 -- Navigation
 -- Splits
-vim.keymap.set( "n", "<C-h>", "<C-w>h", { noremap = true })
+-- vim.keymap.set( "n", "<C-h>", "<C-w>h", { noremap = true })
 -- vim.keymap.set( "n", "<C-j>", "<C-w>j", { noremap = true })
 -- vim.keymap.set( "n", "<C-k>", "<C-w>k", { noremap = true })
-vim.keymap.set( "n", "<C-l>", "<C-w>l", { noremap = true })
+-- vim.keymap.set( "n", "<C-l>", "<C-w>l", { noremap = true })
 -- Tabs
-vim.keymap.set( "n", "<A-H>", "gT", { noremap = true })
-vim.keymap.set( "n", "<A-L>", "gt", { noremap = true })
+vim.keymap.set( "n", "<C-w><C-h>", "gT", { noremap = true })
+vim.keymap.set( "n", "<C-w><C-l>", "gt", { noremap = true })
 
 -- Redirect delete and change to null register to avoid overwriting clipboard
 vim.keymap.set( "n", "d", "\"_d", { noremap = true })

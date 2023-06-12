@@ -16,7 +16,10 @@ return {
       require('illuminate').configure( {
         modes_allowlist = { 'n' },
         min_count_to_hightlight = 2,
-        delay=500,
+        delay=1000,
+        providers = {
+          'treesitter',
+        },
       })
     end,
     init = function()

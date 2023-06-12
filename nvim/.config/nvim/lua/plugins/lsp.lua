@@ -25,6 +25,31 @@ return {
           },
         }
       end,
+      ["clangd"] = function()
+        require("lspconfig").clangd.setup {
+          cmd = {
+            "clangd-15",
+            "--background-index",
+            "--clang-tidy",
+            -- "--compile_args_from=filesystem", -- lsp-> does not come from compie_commands.json
+            -- "--completion-parse=always",
+            "--completion-style=bundled",
+            "--cross-file-rename",
+            -- "--debug-origin",
+            -- "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+            -- "--fallback-style=Qt",
+            -- "--folding-ranges",
+            -- "--function-arg-placeholders",
+            "--header-insertion=iwyu",
+            -- "--pch-storage=memory", -- could also be disk
+            "--suggest-missing-includes",
+            -- "-j=4",		-- number of workers
+            -- "--resource-dir="
+            -- "--log=error",
+            --[[ "--query-driver=/usr/bin/g++", ]]
+          },
+        }
+      end,
       function (server_name)
         require("lspconfig")[server_name].setup {}
       end,
@@ -47,6 +72,7 @@ return {
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, opts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts) -- moved to telescope
 
         vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
         vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
@@ -58,8 +84,10 @@ return {
 
         vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
         vim.keymap.set('n', '<leader>vf', vim.lsp.buf.code_action, opts)
+        -- vim.keymap.set('n', '<leader>va', vim.diagnostic.setqflist, opts); -- moved to telescope
 
-        vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, opts)
+        -- vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, opts)
+        vim.api.nvim_create_user_command('Format', vim.lsp.buf.formatting, {});
       end
     })
   end
