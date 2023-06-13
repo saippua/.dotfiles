@@ -8,7 +8,7 @@ return {
   config = function()
     -- Setup Mason.nvim to automatically load LSPs
     require("mason-lspconfig").setup_handlers {
-      ["lua_ls"] = function ()
+      ["lua_ls"] = function()
         require("lspconfig").lua_ls.setup {
           settings = {
             Lua = {
@@ -25,13 +25,21 @@ return {
           },
         }
       end,
-      function (server_name)
+      ["clangd"] = function()
+        require("lspconfig").clangd.setup {
+          cmd = {
+            "clangd-15",
+            "--background-index"
+          },
+        }
+      end,
+      function(server_name)
         require("lspconfig")[server_name].setup {}
       end,
-    --   -- -- Overrides
-    --   -- ["rust_analyzer"] = function()
-    --   --   require("rust-tools").setup{}
-    --   -- end,
+      --   -- -- Overrides
+      --   -- ["rust_analyzer"] = function()
+      --   --   require("rust-tools").setup{}
+      --   -- end,
     }
 
 
@@ -51,7 +59,7 @@ return {
         vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
         vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
         vim.keymap.set('n', '<leader>wl', function()
-            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
 
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
@@ -59,7 +67,7 @@ return {
         vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
         vim.keymap.set('n', '<leader>vf', vim.lsp.buf.code_action, opts)
 
-        vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, opts)
+        vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
       end
     })
   end
