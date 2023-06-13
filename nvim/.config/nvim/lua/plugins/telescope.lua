@@ -11,6 +11,8 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.git_files,      { noremap = true, desc = "Find Git: Fuzzy find file in git." })
       vim.keymap.set('n', '<leader>fb', builtin.buffers,        { noremap = true, desc = "Find Buffer: Fuzzy find buffer." })
       vim.keymap.set('n', 'gr',         builtin.lsp_references, { noremap = true, desc = "Find references of symbol under cursor." })
+        -- vim.keymap.set('n', '<leader>va', vim.diagnostic.setqflist, opts); -- moved to telescope
+      vim.keymap.set('n', '<leader>va', builtin.quickfix,       { noremap = true, desc = "Show quickfix list." })
 
       require('telescope').setup {
         defaults = {
