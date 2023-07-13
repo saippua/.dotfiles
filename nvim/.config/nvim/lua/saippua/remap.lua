@@ -1,4 +1,32 @@
 
+-- Custom escape sequences
+vim.cmd [[ 
+set <F15>=[1;6I
+set <F16>=[1;6I
+set <F17>=[1;7I
+
+nmap <F15> <C-Tab>
+nmap <F16> <C-S-Tab>
+nmap <F17> <C-BS>
+
+imap <F15> <C-Tab>
+imap <F16> <C-S-Tab>
+imap <F17> <C-BS>
+
+nmap <C-Tab> :echo 'test'<CR>
+nmap <F15> :echo 'test2'<CR>
+
+]]
+
+
+-- vim.keymap.set( "i", "<F15>", "<C-Tab>",    { noremap = false })
+-- vim.keymap.set( "i", "<F16>", "<C-S-Tab>",  { noremap = false })
+-- vim.keymap.set( "i", "<F17>", "<C-BS>",     { noremap = false })
+-- vim.keymap.set( "n", "<F15>", "<C-Tab>",    { noremap = false })
+-- vim.keymap.set( "n", "<F17>", "<C-BS>",     { noremap = false })
+
+-- vim.keymap.set( "n", "<F12>", ":echo 'test2'", {noremap = false })
+-- vim.keymap.set( "n", "<F15>", ":echo 'test'", { noremap = false })
 -- Config shortcut
 
 -- Navigation
