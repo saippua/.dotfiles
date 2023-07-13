@@ -9,10 +9,10 @@ return {
       vim.keymap.set('n', '<leader>pf', builtin.find_files,     { noremap = true, desc = "Find File: Fuzzy find file in project."})
       vim.keymap.set('n', '<leader>ps', builtin.live_grep,      { noremap = true, desc = "Find String: Fuzzy find string in project files." })
       vim.keymap.set('n', '<leader>fg', builtin.git_files,      { noremap = true, desc = "Find Git: Fuzzy find file in git." })
-      vim.keymap.set('n', '<leader>fb', builtin.buffers,        { noremap = true, desc = "Find Buffer: Fuzzy find buffer." })
       vim.keymap.set('n', 'gr',         builtin.lsp_references, { noremap = true, desc = "Find references of symbol under cursor." })
         -- vim.keymap.set('n', '<leader>va', vim.diagnostic.setqflist, opts); -- moved to telescope
       vim.keymap.set('n', '<leader>va', builtin.quickfix,       { noremap = true, desc = "Show quickfix list." })
+      vim.keymap.set('n', '<leader>ls', builtin.buffers,        { noremap = true, desc = "Show buffer list." })
 
       require('telescope').setup {
         defaults = {
@@ -41,7 +41,7 @@ return {
             auto_depth=false,
             hide_parent_dir=false,
             prompt_path=false,
-            initial_mode = "normal",
+            -- initial_mode = "normal",
 
             mappings= {
               ["i"] = {
@@ -58,7 +58,7 @@ return {
         }
       }
       require('telescope').load_extension 'file_browser'
-      vim.keymap.set('n', '<leader>pv', ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { noremap = true })
+      vim.keymap.set('n', '<leader>pv', ":Telescope file_browser path=%:p:h<CR>", { noremap = true })
       vim.keymap.set('n', '<leader>conf', ":Telescope file_browser path=~/.config/nvim/ select_buffer=true<CR>", { noremap = true })
     end,
   },
