@@ -8,7 +8,7 @@ return {
   config = function()
     -- Setup Mason.nvim to automatically load LSPs
     require("mason-lspconfig").setup_handlers {
-      ["lua_ls"] = function ()
+      ["lua_ls"] = function()
         require("lspconfig").lua_ls.setup {
           settings = {
             Lua = {
@@ -53,10 +53,10 @@ return {
       function (server_name)
         require("lspconfig")[server_name].setup {}
       end,
-    --   -- -- Overrides
-    --   -- ["rust_analyzer"] = function()
-    --   --   require("rust-tools").setup{}
-    --   -- end,
+      --   -- -- Overrides
+      --   -- ["rust_analyzer"] = function()
+      --   --   require("rust-tools").setup{}
+      --   -- end,
     }
 
 
@@ -77,7 +77,7 @@ return {
         vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
         vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
         vim.keymap.set('n', '<leader>wl', function()
-            print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
 
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)

@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set('n', '<leader>conf', ":e ~/.config/nvim/<CR>", { noremap = true })
+vim.keymap.set('n', '<leader>conf', ":tabnew ~/.config/nvim/<CR>", { noremap = true })
 
 IS_WSL = (function()
   local output = vim.fn.systemlist "uname -r"
