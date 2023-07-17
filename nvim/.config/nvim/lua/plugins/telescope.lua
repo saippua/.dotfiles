@@ -10,8 +10,10 @@ return {
       vim.keymap.set('n', '<leader>ps', builtin.live_grep,      { noremap = true, desc = "Find String: Fuzzy find string in project files." })
       vim.keymap.set('n', '<leader>fg', builtin.git_files,      { noremap = true, desc = "Find Git: Fuzzy find file in git." })
       vim.keymap.set('n', 'gr',         builtin.lsp_references, { noremap = true, desc = "Find references of symbol under cursor." })
-        -- vim.keymap.set('n', '<leader>va', vim.diagnostic.setqflist, opts); -- moved to telescope
-      vim.keymap.set('n', '<leader>va', builtin.quickfix,       { noremap = true, desc = "Show quickfix list." })
+      vim.keymap.set('n', '<leader>va', function() builtin.diagnostics { bufnr=0 } end,    { noremap = true, desc = "Show Diagnostics for all open buffers." })
+      vim.keymap.set('n', '<leader>gq', builtin.quickfix,       { noremap = true, desc = "Show quickfix list." })
+      vim.keymap.set('n', 'gs',         builtin.lsp_document_symbols,   {noremap = true, desc = "Document symbols."})
+      vim.keymap.set('n', 'gS',         builtin.lsp_workspace_symbols,  {noremap = true, desc = "Document symbols."})
       vim.keymap.set('n', '<leader>ls', builtin.buffers,        { noremap = true, desc = "Show buffer list." })
       vim.keymap.set('n', 'gs',         builtin.lsp_document_symbols,        { noremap = true, desc = "Show document symbols."})
       vim.keymap.set('n', 'gS',         builtin.lsp_workspace_symbols,        { noremap = true, desc = "Show workspace symbols."})

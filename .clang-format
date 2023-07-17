@@ -1,9 +1,9 @@
 ---
 Language:        Cpp
 # BasedOnStyle:  LLVM
-AccessModifierOffset: -4
-AlignAfterOpenBracket: BlockIndent
-AlignArrayOfStructures: None
+AccessModifierOffset: -2
+AlignAfterOpenBracket: Align
+AlignArrayOfStructures: Right
 AlignConsecutiveAssignments:
   Enabled:         false
   AcrossEmptyLines: false
@@ -30,10 +30,12 @@ AlignConsecutiveMacros:
   PadOperators:    false
 AlignEscapedNewlines: Right
 AlignOperands:   Align
-AlignTrailingComments: true
-AllowAllArgumentsOnNextLine: true
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 0
+AllowAllArgumentsOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: false
-AllowShortEnumsOnASingleLine: false
+AllowShortEnumsOnASingleLine: true
 AllowShortBlocksOnASingleLine: Never
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: All
@@ -64,14 +66,14 @@ BraceWrapping:
   BeforeLambdaBody: false
   BeforeWhile:     false
   IndentBraces:    false
-  SplitEmptyFunction: false
-  SplitEmptyRecord: false
-  SplitEmptyNamespace: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
 BreakBeforeBinaryOperators: None
 BreakBeforeConceptDeclarations: Always
 BreakBeforeBraces: Stroustrup
 BreakBeforeInheritanceComma: false
-BreakInheritanceList: BeforeColon
+BreakInheritanceList: AfterComma
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializersBeforeComma: false
 BreakConstructorInitializers: AfterColon
@@ -82,7 +84,7 @@ CommentPragmas:  '^ IWYU pragma:'
 QualifierAlignment: Leave
 CompactNamespaces: false
 ConstructorInitializerIndentWidth: 4
-ContinuationIndentWidth: 8
+ContinuationIndentWidth: 4
 Cpp11BracedListStyle: true
 DeriveLineEnding: true
 DerivePointerAlignment: false
@@ -90,7 +92,7 @@ DisableFormat:   false
 EmptyLineAfterAccessModifier: Never
 EmptyLineBeforeAccessModifier: LogicalBlock
 ExperimentalAutoDetectBinPacking: false
-PackConstructorInitializers: Never
+PackConstructorInitializers: NextLine
 BasedOnStyle:    ''
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 AllowAllConstructorInitializersOnNextLine: true
@@ -124,9 +126,10 @@ IndentGotoLabels: true
 IndentPPDirectives: None
 IndentExternBlock: AfterExternBlock
 IndentRequiresClause: true
-IndentWidth:     4
+IndentWidth: 2
 IndentWrappedFunctionNames: false
 InsertBraces:    false
+InsertNewlineAtEOF: true
 InsertTrailingCommas: None
 JavaScriptQuotes: Leave
 JavaScriptWrapImports: true
@@ -134,7 +137,7 @@ KeepEmptyLinesAtTheStartOfBlocks: true
 LambdaBodyIndentation: Signature
 MacroBlockBegin: ''
 MacroBlockEnd:   ''
-MaxEmptyLinesToKeep: 1
+MaxEmptyLinesToKeep: 2
 NamespaceIndentation: None
 ObjCBinPackProtocolList: Auto
 ObjCBlockIndentWidth: 2
