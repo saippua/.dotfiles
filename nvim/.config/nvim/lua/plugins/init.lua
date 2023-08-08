@@ -10,6 +10,8 @@ return {
   'tpope/vim-surround',
   { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
 
+  --- NOTE::::: vim-illuminate seems to cause crazy lag on larger files (50kb+)
+  --Hopefully large_file_cutoff fixes this problem.
   {
     'RREthy/vim-illuminate',
     config = function()
@@ -17,6 +19,7 @@ return {
         modes_allowlist = { 'n' },
         min_count_to_hightlight = 2,
         delay=1000,
+        large_file_cutoff=1000,
         providers = {
           'treesitter',
         },

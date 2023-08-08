@@ -20,7 +20,7 @@ return {
 
           -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
           disable = function(_, buf)
-              local max_filesize = 1000 * 1024 -- 100 KB
+              local max_filesize = 1000 * 1024 -- 1000 KB
               local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
               if ok and stats and stats.size > max_filesize then
                   return true
@@ -33,6 +33,17 @@ return {
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },
+      }
+      local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+      parser_config.fsharp = {
+        install_info = {
+          url = "https://github.com/Nsidorenco/tree-sitter-fsharp",
+          branch = "develop",
+          files = { "src/scanner.cc", "src/parser.c" },
+          generate_requires_npm = true,
+          requires_generate_from_grammar = true
+        },
+        filetype = "fsharp",
       }
     end
   },
