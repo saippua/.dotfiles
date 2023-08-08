@@ -15,6 +15,8 @@ return {
       vim.keymap.set('n', 'gs',         builtin.lsp_document_symbols,   {noremap = true, desc = "Document symbols."})
       vim.keymap.set('n', 'gS',         builtin.lsp_workspace_symbols,  {noremap = true, desc = "Document symbols."})
       vim.keymap.set('n', '<leader>ls', builtin.buffers,        { noremap = true, desc = "Show buffer list." })
+      vim.keymap.set('n', 'gs',         builtin.lsp_document_symbols,        { noremap = true, desc = "Show document symbols."})
+      vim.keymap.set('n', 'gS',         builtin.lsp_workspace_symbols,        { noremap = true, desc = "Show workspace symbols."})
 
       require('telescope').setup {
         defaults = {
