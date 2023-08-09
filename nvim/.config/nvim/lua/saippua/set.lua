@@ -24,6 +24,14 @@ vim.opt.signcolumn = 'yes'
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 4
 
+vim.api.nvim_create_autocmd({"BufNewFile","BufRead"}, {
+  pattern = { "*" },
+  callback = function(_)
+    vim.bo.formatoptions = vim.bo.formatoptions:gsub("o","").."/"
+  end
+})
+
+
 -- vim.g.vimtext_view_general_viewer = '/mnt/c/Users/Saippua/AppData/Local/SumatraPDF/SumatraPDF.exe' -- WSL ONLY
 
 -- Disable mouse
