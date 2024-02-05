@@ -30,6 +30,13 @@ return {
         --   end
         --   return variables
         -- end,
+      },
+      {
+        name = "Attach to process",
+        type = 'lldb',
+        request = 'attach',
+        pid = require('dap.utils').pick_process,
+        args = {},
       }
     }
     dap.configurations.c = dap.configurations.cpp
@@ -49,6 +56,15 @@ return {
     dap.listeners.before.event_exited["dapui_config"] = function()
       dapui.close()
     end
+
+    vim.api.nvim_create_user_command('DB', function(opts)
+      if (opts.fargs[1] == 'attach') then
+        if (#opts.fargs ~= 2) then
+          error("Usage: `:DB attach <process_id>`")
+        end
+        print('attaching to id: ' .. opts.fargs[2])
+      end
+    end, { nargs = '+' })
 
 
   end

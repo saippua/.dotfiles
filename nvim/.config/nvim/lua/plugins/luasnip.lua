@@ -13,6 +13,8 @@ return {
     })
 
     local luasnip = require('luasnip')
+    
+    local in_snip = luasnip.choice_active()
 
     local jf = function()
       local jmp = luasnip.locally_jumpable(1)
@@ -25,10 +27,10 @@ return {
       print(jmp)
       if jmp then luasnip.jump(-1) end
     end
-    vim.keymap.set('i', '<C-n>', jf, { remap = false })
-    vim.keymap.set('s', '<C-n>', jf, { remap = false })
-    vim.keymap.set('i', '<C-p>', jb, { remap = false })
-    vim.keymap.set('s', '<C-p>', jb, { remap = false })
+    -- vim.keymap.set('i', '<CR>', function() if luasnip.choice_active() then jf else , { remap = false })
+    -- vim.keymap.set('s', '<CR>', jf, { remap = false })
+    -- vim.keymap.set('i', '<C-p>', jb, { remap = false })
+    -- vim.keymap.set('s', '<C-p>', jb, { remap = false })
 
     vim.api.nvim_create_user_command("Snippets", function() require('luasnip.loaders').edit_snippet_files({}) end, {})
 

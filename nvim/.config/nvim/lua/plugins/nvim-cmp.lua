@@ -16,8 +16,8 @@ return {
     -- require('luasnip').config.setup({ history=false })
 
     local cmp = require('cmp')
+    local luasnip = require('luasnip')
 
-    -- local luasnip = require('luasnip')
     cmp.setup {
       snippet = {
         expand = function(args)
@@ -35,7 +35,16 @@ return {
           c = cmp.mapping.abort(),
         },
         ['<CR>'] = cmp.mapping({
-          i = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          i = function(fb) if luasnip.locally_jumpable(1) then luasnip.jump(1) else if cmp.visible() and cmp.get_active_entry() then cmp.confirm({ select = false }) else fb() end end end,
+          s = function(fb) if luasnip.locally_jumpable(1) then luasnip.jump(1) else fb() end end,
+        }),
+        ['C-n'] = cmp.mapping({
+          i = function(fb) if luasnip.locally_jumpable(1) then luasnip.jump(1) else fb() end end,
+          s = function(fb) if luasnip.locally_jumpable(1) then luasnip.jump(1) else fb() end end,
+        }),
+        ['C-p'] = cmp.mapping({
+          i = function(fb) if luasnip.locally_jumpable(-1) then luasnip.jump(-1) else fb() end end,
+          s = function(fb) if luasnip.locally_jumpable(-1) then luasnip.jump(-1) else fb() end end,
         }),
         ['<Tab>'] = cmp.mapping({
           i = function(fb) if cmp.visible() then cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert }) else fb() end end,

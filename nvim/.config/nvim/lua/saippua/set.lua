@@ -24,6 +24,8 @@ vim.opt.signcolumn = 'yes'
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 4
 
+vim.o.completeopt = 'menu,preview,menuone,noselect'
+
 vim.api.nvim_create_autocmd({"BufNewFile","BufRead"}, {
   pattern = { "*" },
   callback = function(_)
