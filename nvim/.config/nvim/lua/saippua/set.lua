@@ -33,6 +33,12 @@ vim.api.nvim_create_autocmd({"BufNewFile","BufRead"}, {
   end
 })
 
+vim.api.nvim_create_user_command('SetTab', function(args) 
+  vim.opt.tabstop = tonumber(args['args'])
+  vim.opt.softtabstop = tonumber(args['args'])
+  vim.opt.shiftwidth = tonumber(args['args'])
+end, {nargs=1});
+
 
 -- vim.g.vimtext_view_general_viewer = '/mnt/c/Users/Saippua/AppData/Local/SumatraPDF/SumatraPDF.exe' -- WSL ONLY
 
