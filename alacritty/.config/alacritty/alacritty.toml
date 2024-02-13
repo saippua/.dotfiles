@@ -1,0 +1,21 @@
+[font]
+size = 12.0
+
+[font.normal]
+family = "Meslo LG S DZ for Powerline"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;5I"
+key = "Tab"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;6I"
+key = "Tab"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[1;7I"
+key = "Back"
+mods = "Control"
